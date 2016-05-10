@@ -4,7 +4,7 @@
     android:initialLayout="@layout/time_widget"
     android:minHeight="55dp"
     android:minWidth="110dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/example_timewidget_preview"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="2000"
     android:widgetCategory="home_screen"></appwidget-provider>

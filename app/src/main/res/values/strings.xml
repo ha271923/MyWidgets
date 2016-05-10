@@ -5,4 +5,12 @@
     <string name="action_settings">Settings</string>
     <string name="appwidget_text">time_List</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="empty_view_text">No cities found...</string>
+    <string name="toast_format_string">%1$s!</string>
+    <string name="item_format_string">%1$d\u00B0 on %2$s</string>
+    <string name="header_format_string">%1$d\u00B0 in %2$s</string>
+    <string name="refresh">Refresh</string>
+    <string name="city_name">San Francisco</string>
+
 </resources>

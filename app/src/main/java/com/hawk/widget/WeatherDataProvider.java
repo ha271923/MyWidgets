@@ -44,7 +44,8 @@ class WeatherDataPoint {
  * The AppWidgetProvider for our sample weather widget.
  */
 public class WeatherDataProvider extends ContentProvider {
-    public static final Uri CONTENT_URI = Uri.parse("content://com.example.android.weatherlistwidget.provider");
+    public static final Uri CONTENT_URI = Uri.parse("content://com.hawk.widget.weatherlistwidget.provider");
+
     public static class Columns {
         public static final String ID = "_id";
         public static final String DAY = "day";
@@ -61,6 +62,7 @@ public class WeatherDataProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         // We are going to initialize the data provider with some default values
+        // Week1: fake data(DAY,TEMPERATURE)
         sData.add(new WeatherDataPoint("Monday", 13));
         sData.add(new WeatherDataPoint("Tuesday", 1));
         sData.add(new WeatherDataPoint("Wednesday", 7));
@@ -68,7 +70,7 @@ public class WeatherDataProvider extends ContentProvider {
         sData.add(new WeatherDataPoint("Friday", 22));
         sData.add(new WeatherDataPoint("Saturday", -10));
         sData.add(new WeatherDataPoint("Sunday", -13));
-
+        // Week2: fake data(DAY,TEMPERATURE)
         sData.add(new WeatherDataPoint("Monday", 8));
         sData.add(new WeatherDataPoint("Tuesday", 11));
         sData.add(new WeatherDataPoint("Wednesday", -1));
