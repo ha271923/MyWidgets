@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="62sp"
+        android:shadowColor="#44000000"
+        android:shadowRadius="5"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:fontFamily="sans-serif-smallcaps"/>
+
+    <TextView android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/time"
+        android:textColor="#dddddd"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-smallcaps"/>
+
+</RelativeLayout>
