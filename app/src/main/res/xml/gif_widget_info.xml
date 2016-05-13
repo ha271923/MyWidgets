@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/activity_main_gifmoviewview"
+    android:initialLayout="@layout/activity_main_gifmoviewview"
+    android:minHeight="55dp"
+    android:minWidth="110dp"
+    android:previewImage="@drawable/example_gif_preview"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="1000"
+    android:widgetCategory="home_screen"></appwidget-provider>

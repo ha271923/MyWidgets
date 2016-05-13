@@ -48,6 +48,17 @@
                   android:name=".WeatherDataProvider"
                   android:exported="true" />
 
+        <receiver
+            android:name=".GifWidget"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/gif_widget_info" />
+        </receiver>
+
     </application>
 
 </manifest>
