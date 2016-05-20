@@ -13,4 +13,12 @@
             android:textSize="50dp"/>
 
 
+            <com.hawk.widget.view.GifMovieView
+                android:id="@+id/gif_animation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onGifClick"
+                custom:gif="@drawable/gif_heart" />
+
 </RelativeLayout>

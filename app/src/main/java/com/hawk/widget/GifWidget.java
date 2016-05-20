@@ -9,7 +9,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.util.Random;
-
+import com.hawk.widget.view.GifMovieView;
 /**
  * Created by hawk.wei on 2016/5/10.
  */
@@ -39,16 +39,17 @@ public class GifWidget extends AppWidgetProvider{
             clickintent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
                     0, clickintent, PendingIntent.FLAG_UPDATE_CURRENT);
+
             // Get the layout for the App Widget and attach an on-click listener to the ui element
             String number = String.format("%03d", (new Random().nextInt(900) + 100));
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),R.layout.activity_main_gifmoviewview);
             remoteViews.setTextViewText(R.id.gif_text, number);
             remoteViews.setOnClickPendingIntent(R.id.gif_text, pendingIntent);
-
+            GifMovieView gifa = new GifMovieView(context);
+            gifa.invalidate();
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 }
-
