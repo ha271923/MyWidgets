@@ -1,24 +1,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:custom="http://schemas.android.com/apk/res/com.hawk.widget"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@drawable/background"
               android:orientation="vertical">
 
-        <TextView
+    <ImageButton
+        android:id="@+id/gif_imageViewButton"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gif_imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/gif_text"
             android:text="Testing Widget"
             android:textSize="50dp"/>
 
-
-            <com.hawk.widget.view.GifMovieView
-                android:id="@+id/gif_animation"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onGifClick"
-                custom:gif="@drawable/gif_heart" />
-
+    <!--
+                <com.hawk.widget.view.GifMovieView
+                    android:id="@+id/gif_animation"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onGifClick"
+                    custom:gif="@drawable/gif_heart" />
+    -->
 </RelativeLayout>
