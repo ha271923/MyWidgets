@@ -5,8 +5,14 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import com.hawk.widget.utils.SMLog;
+import com.hawk.widget.utils.Utils;
 
 /**
  * Created by hawk.wei on 2016/5/10.
@@ -14,9 +20,12 @@ import android.widget.Toast;
 public class ListWidget extends AppWidgetProvider{
     public static final String CLICK_ACTION = "com.hawk.widget.CLICK_ACTION";
     public static final String CLICK_EXTRA = "com.hawk.widget.CLICK_EXTRA";
+
+
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        SMLog.i("","");
         String action = intent.getAction();
         if (action.equals(CLICK_ACTION)) {
             String text = intent.getStringExtra(CLICK_EXTRA);
@@ -25,7 +34,23 @@ public class ListWidget extends AppWidgetProvider{
     }
 
     @Override
+    public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager,
+                                          int appWidgetId, Bundle newOptions) {
+        SMLog.i("","");
+        int minWidth = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
+        int maxWidth = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH);
+        int minHeight = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
+        int maxHeight = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT);
+        SMLog.i("","W="+minWidth+"~"+maxWidth);
+        SMLog.i("","H="+minHeight+"~"+maxHeight);
+
+    }
+
+
+    @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        SMLog.i("","");
+
         for (int appWidgetId : appWidgetIds) {
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.list_widget);
 
@@ -43,5 +68,45 @@ public class ListWidget extends AppWidgetProvider{
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
+    }
+
+    public ListWidget() {
+        super();
+        SMLog.i("","");
+    }
+
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        super.onDeleted(context, appWidgetIds);
+        SMLog.i("","");
+
+    }
+
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+        SMLog.i("","");
+
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        SMLog.i("","");
+
+    }
+
+    @Override
+    public void onRestored(Context context, int[] oldWidgetIds, int[] newWidgetIds) {
+        super.onRestored(context, oldWidgetIds, newWidgetIds);
+        SMLog.i("","");
+
+    }
+
+    @Override
+    public IBinder peekService(Context myContext, Intent service) {
+        SMLog.i("","");
+
+        return super.peekService(myContext, service);
     }
 }

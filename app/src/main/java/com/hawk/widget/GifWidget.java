@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import com.hawk.widget.utils.SMLog;
+import com.hawk.widget.utils.Utils;
 import com.hawk.widget.view.GifDecoderView;
 import com.hawk.widget.view.GifMovieView;
 /**
@@ -22,6 +24,7 @@ public class GifWidget extends AppWidgetProvider{
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        SMLog.i("","");
         String action = intent.getAction();
         if (action.equals(CLICK_ACTION)) {
             String text = intent.getStringExtra(CLICK_EXTRA);
@@ -32,6 +35,7 @@ public class GifWidget extends AppWidgetProvider{
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int count = appWidgetIds.length;
+        SMLog.i("","");
 
         for (int i = 0; i < count; i++) {
             int widgetId = appWidgetIds[i];

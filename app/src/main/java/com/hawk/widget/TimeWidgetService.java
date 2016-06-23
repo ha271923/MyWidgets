@@ -9,6 +9,10 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
+import com.hawk.widget.utils.SMLog;
+import com.hawk.widget.utils.UStats;
+import com.hawk.widget.utils.Utils;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,17 +25,26 @@ public class TimeWidgetService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        SMLog.i("","");
         return null;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        SMLog.i("","");
         mHandler.removeCallbacks(mRunnable);
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        SMLog.i("","");
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        SMLog.i("","");
         mHandler = new Handler();
         mHandler.post(mRunnable);
         return super.onStartCommand(intent, flags, startId);
@@ -39,11 +52,18 @@ public class TimeWidgetService extends Service {
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
+            SMLog.i("","");
             updateView();
             mHandler.postDelayed(this, 1000);
         }
     };
     private void updateView(){
+        SMLog.i("","");
+
+        SMLog.i("","GetCurrentActivityName");
+        Utils.printProcessesList(this);
+        Utils.getForegroundPackage(this);
+        Utils.getForegroundActivity(this);
 
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.time_widget);
         view.setTextViewText(R.id.time, new SimpleDateFormat( "HH:mm" ).format( new Date()));
@@ -54,4 +74,5 @@ public class TimeWidgetService extends Service {
         AppWidgetManager manager = AppWidgetManager.getInstance(this);
         manager.updateAppWidget(thisWidget, view);
     }
+
 }
