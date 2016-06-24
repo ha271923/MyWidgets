@@ -2,13 +2,13 @@
 package com.hawk.widget;
 
 import android.content.Intent;
-import android.os.Build;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.WindowManager;
 
+import com.hawk.widget.utils.HomeWatcher;
+import com.hawk.widget.utils.OnHomePressedListener;
 import com.hawk.widget.utils.SMLog;
 import com.hawk.widget.utils.UStats;
 
@@ -26,9 +26,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
+        HomeWatcher mHomeWatcher = new HomeWatcher(this);
+        mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                SMLog.i("","onHomePressed+++++++++++++++++"); // Hawk: Test OK on API23
+                // do something here...
+            }
+            @Override
+            public void onHomeLongPressed() {
+                SMLog.i("","onHomeLongPressed+++++++++++++++++"); // Hawk: Test failed on API23
+            }
+        });
+        mHomeWatcher.startWatch();
+
     }
 
     /*
