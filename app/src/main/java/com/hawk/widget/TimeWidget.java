@@ -16,7 +16,7 @@ public class TimeWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        SMLog.i("","");
+        SMLog.i("");
         // There may be multiple widgets active, so update all of them
         Intent intent = new Intent(context, TimeWidgetService.class);
         context.startService(intent);
@@ -25,13 +25,13 @@ public class TimeWidget extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
-        SMLog.i("","");
+        SMLog.i("");
     }
 
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
-        SMLog.i("","");
+        SMLog.i("");
         Intent intent = new Intent(context, TimeWidgetService.class);
         context.stopService(intent);
     }
@@ -39,37 +39,37 @@ public class TimeWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        SMLog.i("","");
+        SMLog.i("");
 
     }
 
     public TimeWidget() {
         super();
-        SMLog.i("","");
+        SMLog.i("");
 
     }
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
-        SMLog.i("","");
+        SMLog.i("");
     }
 
     @Override
     public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
-        SMLog.i("","");
+        SMLog.i("");
     }
 
     @Override
     public void onRestored(Context context, int[] oldWidgetIds, int[] newWidgetIds) {
         super.onRestored(context, oldWidgetIds, newWidgetIds);
-        SMLog.i("","");
+        SMLog.i("");
     }
 
     @Override
     public IBinder peekService(Context myContext, Intent service) {
-        SMLog.i("","");
+        SMLog.i("");
         return super.peekService(myContext, service);
     }
 }

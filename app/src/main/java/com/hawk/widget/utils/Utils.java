@@ -31,7 +31,7 @@ public class Utils {
             ActivityManager activityManager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
             List<ActivityManager.RunningAppProcessInfo> RAP = activityManager.getRunningAppProcesses();
             for(ActivityManager.RunningAppProcessInfo processInfo: RAP ){
-                SMLog.i("","process = [ "+processInfo.processName+" ]");
+                SMLog.i("process = [ "+processInfo.processName+" ]");
             }
         }
     }

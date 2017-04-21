@@ -17,7 +17,7 @@ public class ListWidgetService extends RemoteViewsService {
     };
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
-        SMLog.i("","");
+        SMLog.i("");
         return new ListRemoteViewsFactory(this, intent);
     }
 
@@ -26,35 +26,35 @@ public class ListWidgetService extends RemoteViewsService {
         private final int mAppWidgetId;
 
         public ListRemoteViewsFactory(Context context, Intent intent) {
-            SMLog.i("","");
+            SMLog.i("");
             mContext = context;
             mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                     AppWidgetManager.INVALID_APPWIDGET_ID);
         }
         @Override
         public void onCreate() {
-            SMLog.i("","");
+            SMLog.i("");
         }
 
         @Override
         public void onDataSetChanged() {
-            SMLog.i("","");
+            SMLog.i("");
         }
 
         @Override
         public void onDestroy() {
-            SMLog.i("","");
+            SMLog.i("");
         }
 
         @Override
         public int getCount() {
-            SMLog.i("","");
+            SMLog.i("");
             return data.length;
         }
 
         @Override
         public RemoteViews getViewAt(int i) {
-            SMLog.i("","");
+            SMLog.i("");
             RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.item_widget);
             rv.setTextViewText(R.id.widget_item, data[i]);
 
@@ -66,25 +66,25 @@ public class ListWidgetService extends RemoteViewsService {
 
         @Override
         public RemoteViews getLoadingView() {
-            SMLog.i("","");
+            SMLog.i("");
             return null;
         }
 
         @Override
         public int getViewTypeCount() {
-            SMLog.i("","");
+            SMLog.i("");
             return 1;
         }
 
         @Override
         public long getItemId(int i) {
-            SMLog.i("","");
+            SMLog.i("");
             return i;
         }
 
         @Override
         public boolean hasStableIds() {
-            SMLog.i("","");
+            SMLog.i("");
             return true;
         }
     }

@@ -23,26 +23,26 @@ public class TimeWidgetService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        SMLog.i("","");
+        SMLog.i("");
         return null;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        SMLog.i("","");
+        SMLog.i("");
         mHandler.removeCallbacks(mRunnable);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        SMLog.i("","");
+        SMLog.i("");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        SMLog.i("","");
+        SMLog.i("");
         mHandler = new Handler();
         mHandler.post(mRunnable);
         return super.onStartCommand(intent, flags, startId);
@@ -50,15 +50,15 @@ public class TimeWidgetService extends Service {
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
-            SMLog.i("","");
+            SMLog.i("");
             updateView();
             mHandler.postDelayed(this, 1000);
         }
     };
     private void updateView(){
-        SMLog.i("","");
+        SMLog.i("");
 
-        SMLog.i("","GetCurrentActivityName");
+        SMLog.i("GetCurrentActivityName");
 
         // Regular do these jobs
         // Utils.printProcessesList(this);

@@ -35,7 +35,7 @@ public class UStats {
         if (appList != null && appList.size() > 0) {
             SortedMap<Long, UsageStats> mySortedMap = new TreeMap<Long, UsageStats>();
             for (UsageStats usageStats : appList) {
-                SMLog.i("","process = [ "+usageStats.getPackageName()+" ]");
+                SMLog.i("process = [ "+usageStats.getPackageName()+" ]");
                 mySortedMap.put(usageStats.getLastTimeUsed(), usageStats);
             }
         }
@@ -91,7 +91,7 @@ public class UStats {
         if (appList != null && appList.size() > 0) {
             SortedMap<Long, UsageStats> mySortedMap = new TreeMap<Long, UsageStats>();
             for (UsageStats usageStats : appList) {
-                SMLog.i("","process = [ "+usageStats.getPackageName()+" ]");
+                SMLog.i("process = [ "+usageStats.getPackageName()+" ]");
                 mySortedMap.put(usageStats.getLastTimeUsed(), usageStats);
                 if(processName.equals(usageStats.getPackageName()))
                 {

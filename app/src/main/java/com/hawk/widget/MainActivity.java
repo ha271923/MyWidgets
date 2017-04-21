@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
         mHomeWatcher.setOnHomePressedListener(new OnHomePressedListener() {
             @Override
             public void onHomePressed() {
-                SMLog.i("","onHomePressed+++++++++++++++++"); // Hawk: Test OK on API23
+                SMLog.i("onHomePressed+++++++++++++++++"); // Hawk: Test OK on API23
                 // do something here...
             }
             @Override
             public void onHomeLongPressed() {
-                SMLog.i("","onHomeLongPressed+++++++++++++++++"); // Hawk: Test failed on API23
+                SMLog.i("onHomeLongPressed+++++++++++++++++"); // Hawk: Test failed on API23
             }
         });
         mHomeWatcher.startWatch();
@@ -73,24 +73,24 @@ public class MainActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_HOME)
         {
-            SMLog.i("","onKeyDown = KEYCODE_HOME");
+            SMLog.i("onKeyDown = KEYCODE_HOME");
             //The Code Want to Perform.
         }
         else if (keyCode == KeyEvent.KEYCODE_CALL || keyCode == KeyEvent.KEYCODE_ENDCALL || keyCode == KeyEvent.KEYCODE_SETTINGS)
         {
-            SMLog.i("","onKeyDown = "+ keyCode);
+            SMLog.i("onKeyDown = "+ keyCode);
             //preventing default implementation previous to android.os.Build.VERSION_CODES.ECLAIR
             return true;
         }
         else{
-            SMLog.i("","onKeyDown = "+ keyCode);
+            SMLog.i("onKeyDown = "+ keyCode);
         }
         return super.onKeyDown(keyCode, event);
     }
 
     @Override
     public void onBackPressed() {
-        SMLog.i("","onBackPressed = ");
+        SMLog.i("onBackPressed = ");
         super.onBackPressed();
     }
 
