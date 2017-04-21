@@ -1,17 +1,15 @@
 
 package com.hawk.widget;
 
-import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.hawk.widget.utils.HomeWatcher;
 import com.hawk.widget.utils.OnHomePressedListener;
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         //Check if permission enabled
+        //Acquire UStates permission is for process management purpose, ex: getForegroundPackage,Activity,process
         if (!UStats.isUsageStatsON(this)){
             mMyTv2.setText("please ENABLE this APP.");
         }

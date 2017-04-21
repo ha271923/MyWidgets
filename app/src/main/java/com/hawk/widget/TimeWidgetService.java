@@ -10,8 +10,6 @@ import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
 import com.hawk.widget.utils.SMLog;
-import com.hawk.widget.utils.UStats;
-import com.hawk.widget.utils.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,9 +59,11 @@ public class TimeWidgetService extends Service {
         SMLog.i("","");
 
         SMLog.i("","GetCurrentActivityName");
-        Utils.printProcessesList(this);
-        Utils.getForegroundPackage(this);
-        Utils.getForegroundActivity(this);
+
+        // Regular do these jobs
+        // Utils.printProcessesList(this);
+        // Utils.getForegroundPackage(this);
+        // Utils.getForegroundActivity(this);
 
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.time_widget);
         view.setTextViewText(R.id.time, new SimpleDateFormat( "HH:mm" ).format( new Date()));

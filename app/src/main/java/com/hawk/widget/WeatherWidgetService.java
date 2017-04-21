@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 package com.hawk.widget;
-import java.util.ArrayList;
-import java.util.List;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ContentUris;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -69,13 +65,13 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         }
         // Return a proper item with the proper day and temperature
         final String formatStr = mContext.getResources().getString(R.string.item_format_string);
-        final int itemId = R.layout.widget_item;
+        final int itemId = R.layout.weather_widget_item;
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), itemId);
         rv.setTextViewText(R.id.widget_item, String.format(formatStr, temp, day));
         // Set the click intent so that we can handle it and show a toast message
         final Intent fillInIntent = new Intent();
         final Bundle extras = new Bundle();
-        extras.putString(WeatherWidgetProvider.EXTRA_DAY_ID, day);
+        extras.putString(WeatherWidget.EXTRA_DAY_ID, day);
         fillInIntent.putExtras(extras);
         rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
         return rv;

@@ -55,7 +55,7 @@ class WeatherDataProviderObserver extends ContentObserver {
 /**
  * The weather widget's AppWidgetProvider.
  */
-public class WeatherWidgetProvider extends AppWidgetProvider {
+public class WeatherWidget extends AppWidgetProvider {
     public static String CLICK_ACTION = "com.example.android.weatherlistwidget.CLICK";
     public static String REFRESH_ACTION = "com.example.android.weatherlistwidget.REFRESH";
     public static String EXTRA_DAY_ID = "com.example.android.weatherlistwidget.day";
@@ -65,7 +65,7 @@ public class WeatherWidgetProvider extends AppWidgetProvider {
     private static final int sMaxDegrees = 96;
     private boolean mIsLargeLayout = true;
     private int mHeaderWeatherState = 0;
-    public WeatherWidgetProvider() {
+    public WeatherWidget() {
         // Start the worker thread
         sWorkerThread = new HandlerThread("WeatherWidgetProvider-worker");
         sWorkerThread.start();
@@ -81,7 +81,7 @@ public class WeatherWidgetProvider extends AppWidgetProvider {
         final ContentResolver r = context.getContentResolver();
         if (sDataObserver == null) {
             final AppWidgetManager mgr = AppWidgetManager.getInstance(context);
-            final ComponentName cn = new ComponentName(context, WeatherWidgetProvider.class);
+            final ComponentName cn = new ComponentName(context, WeatherWidget.class);
             sDataObserver = new WeatherDataProviderObserver(mgr, cn, sWorkerQueue);
             r.registerContentObserver(WeatherDataProvider.CONTENT_URI, true, sDataObserver);
         }
@@ -114,7 +114,7 @@ public class WeatherWidgetProvider extends AppWidgetProvider {
                     }
                     r.registerContentObserver(WeatherDataProvider.CONTENT_URI, true, sDataObserver);
                     final AppWidgetManager mgr = AppWidgetManager.getInstance(context);
-                    final ComponentName cn = new ComponentName(context, WeatherWidgetProvider.class);
+                    final ComponentName cn = new ComponentName(context, WeatherWidget.class);
                     mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn), R.id.weather_list);
                 }
             });
@@ -138,7 +138,7 @@ public class WeatherWidgetProvider extends AppWidgetProvider {
             final Intent intent = new Intent(context, WeatherWidgetService.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-            rv = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+            rv = new RemoteViews(context.getPackageName(), R.layout.weather_widget_layout);
             rv.setRemoteAdapter(appWidgetId, R.id.weather_list, intent);
             // Set the empty view to be displayed if the collection is empty.  It must be a sibling
             // view of the collection view.
@@ -146,23 +146,23 @@ public class WeatherWidgetProvider extends AppWidgetProvider {
             // Bind a click listener template for the contents of the weather list.  Note that we
             // need to update the intent's data if we set an extra, since the extras will be
             // ignored otherwise.
-            final Intent onClickIntent = new Intent(context, WeatherWidgetProvider.class);
-            onClickIntent.setAction(WeatherWidgetProvider.CLICK_ACTION);
+            final Intent onClickIntent = new Intent(context, WeatherWidget.class);
+            onClickIntent.setAction(WeatherWidget.CLICK_ACTION);
             onClickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             onClickIntent.setData(Uri.parse(onClickIntent.toUri(Intent.URI_INTENT_SCHEME)));
             final PendingIntent onClickPendingIntent = PendingIntent.getBroadcast(context, 0,
                     onClickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setPendingIntentTemplate(R.id.weather_list, onClickPendingIntent);
             // Bind the click intent for the refresh button on the widget
-            final Intent refreshIntent = new Intent(context, WeatherWidgetProvider.class);
-            refreshIntent.setAction(WeatherWidgetProvider.REFRESH_ACTION);
+            final Intent refreshIntent = new Intent(context, WeatherWidget.class);
+            refreshIntent.setAction(WeatherWidget.REFRESH_ACTION);
             final PendingIntent refreshPendingIntent = PendingIntent.getBroadcast(context, 0,
                     refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.refresh, refreshPendingIntent);
             // Restore the minimal header
             rv.setTextViewText(R.id.city_name, context.getString(R.string.city_name));
         } else {
-            rv = new RemoteViews(context.getPackageName(), R.layout.widget_layout_small);
+            rv = new RemoteViews(context.getPackageName(), R.layout.weather_widget_layout_small);
             // Update the header to reflect the weather for "today"
             Cursor c = context.getContentResolver().query(WeatherDataProvider.CONTENT_URI, null,
                     null, null, null);
