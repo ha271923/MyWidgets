@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget_item"
+    android:id="@+id/widget_textview_item"
     android:layout_width="match_parent"
     android:layout_height="46dp"
     android:paddingLeft="25dp"

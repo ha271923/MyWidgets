@@ -67,13 +67,13 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         final String formatStr = mContext.getResources().getString(R.string.item_format_string);
         final int itemId = R.layout.weather_widget_item;
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), itemId);
-        rv.setTextViewText(R.id.widget_item, String.format(formatStr, temp, day));
+        rv.setTextViewText(R.id.widget_textview_item, String.format(formatStr, temp, day));
         // Set the click intent so that we can handle it and show a toast message
         final Intent fillInIntent = new Intent();
         final Bundle extras = new Bundle();
         extras.putString(WeatherWidget.EXTRA_DAY_ID, day);
         fillInIntent.putExtras(extras);
-        rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
+        rv.setOnClickFillInIntent(R.id.widget_textview_item, fillInIntent);
         return rv;
     }
     public RemoteViews getLoadingView() {

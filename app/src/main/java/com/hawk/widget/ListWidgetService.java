@@ -55,12 +55,13 @@ public class ListWidgetService extends RemoteViewsService {
         @Override
         public RemoteViews getViewAt(int i) {
             SMLog.i("");
-            RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.item_widget);
-            rv.setTextViewText(R.id.widget_item, data[i]);
+            RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.list_widget_item);
+            rv.setTextViewText(R.id.widget_textview_item, data[i]);
+            rv.setImageViewResource(R.id.widget_imageview_item, R.drawable.gpcat);
 
             Intent intent = new Intent();
             intent.putExtra(ListWidget.CLICK_EXTRA, data[i]);
-            rv.setOnClickFillInIntent(R.id.widget_item, intent);
+            rv.setOnClickFillInIntent(R.id.widget_textview_item, intent);
             return rv;
         }
 
