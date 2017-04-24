@@ -4,11 +4,16 @@ package com.hawk.widget.utils;
  * Created by ha271 on 2016/6/24.
  */
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ResolveInfo;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // For PowerSaving, a widget can try to monitor the HOME_KEY for more behavior control.
 public class HomeWatcher {
@@ -65,5 +70,34 @@ public class HomeWatcher {
             }
         }
     }
+
+
+    private static List<String> homePackageNamesCache;
+
+    public static List<String> GetHomePackageNames(Context context){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        List<ResolveInfo> info = context.getPackageManager().queryIntentActivities(intent, 0);
+        List<String> homes = new ArrayList<String>(info.size());
+        for(int i=0; i<info.size(); i++){
+            homes.add(info.get(i).activityInfo.packageName);
+            SMLog.i("CATEGORY_HOME: " + info.get(i).activityInfo.packageName);
+        }
+        homes.add(HomeWatcher.class.getPackage().getName());
+        return homes;
+    }
+
+    public static boolean isHomeAtForeground(Context context){
+        if (homePackageNamesCache==null)
+            homePackageNamesCache = GetHomePackageNames(context);
+        return isHomeAtForeground(context, homePackageNamesCache);
+    }
+
+    public static boolean isHomeAtForeground(Context context, List<String> homePackages){
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        String topPackage = am.getRunningTasks(1).get(0).topActivity.getPackageName();
+        return homePackages.contains(topPackage);
+    }
+
 }
 
