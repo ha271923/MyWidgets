@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
+import com.hawk.widget.utils.HomeWatcher;
 import com.hawk.widget.utils.SMLog;
 
 import java.text.SimpleDateFormat;
@@ -57,14 +58,7 @@ public class TimeWidgetService extends Service {
     };
     private void updateView(){
         SMLog.i("");
-
-        SMLog.i("GetCurrentActivityName");
-
-        // Regular do these jobs
-        // Utils.printProcessesList(this);
-        // Utils.getForegroundPackage(this);
-        // Utils.getForegroundActivity(this);
-
+        MyRegularJobs();
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.time_widget);
         view.setTextViewText(R.id.time, new SimpleDateFormat( "HH:mm" ).format( new Date()));
         view.setTextViewText(R.id.date, new SimpleDateFormat( "MM月dd日 " ).format( new Date()));
@@ -73,6 +67,19 @@ public class TimeWidgetService extends Service {
 
         AppWidgetManager manager = AppWidgetManager.getInstance(this);
         manager.updateAppWidget(thisWidget, view);
+    }
+
+
+    void MyRegularJobs(){
+        boolean bIsHomeRunning = HomeWatcher.isHomeAtForeground(this);
+        SMLog.i("isHomeAtForeground= "+ bIsHomeRunning );
+
+        // Regular do these jobs
+        // Utils.printProcessesList(this);
+        // Utils.getForegroundPackage(this);
+        // SMLog.i("GetCurrentActivityName");
+        // Utils.getForegroundActivity(this); // NOT support
+
     }
 
 }
